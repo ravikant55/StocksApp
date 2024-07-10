@@ -12,14 +12,17 @@ import com.example.myapplication.StockRepository
 import com.example.myapplication.StockViewModel
 import com.example.myapplication.StockViewModelFactory
 
-@Composable
+
 /*
+@Composable
 fun StockScreen(stockViewModel: StockViewModel = viewModel(factory = StockViewModelFactory(
     StockRepository()
 ))) {
     val stockList by stockViewModel.stockFlow.collectAsState()
 */
 
+/*
+@Composable
 fun StockScreen() {
     val context = LocalContext.current
     val stockViewModel: StockViewModel = viewModel(factory = StockViewModelFactory(context))
@@ -44,4 +47,11 @@ fun StockScreen() {
 @Composable
 fun PreviewStockScreen() {
     StockScreen()
+}
+*/
+
+
+@Composable
+fun stockScreen(){
+
 }
