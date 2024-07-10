@@ -62,7 +62,6 @@ dependencies {
 
     implementation(libs.androidx.lifecycle.viewmodel.compose)
     implementation(libs.com.google.code.gson)
-    implementation(libs.firebase.crashlytics.buildtools)
 
     testImplementation(libs.junit)
     androidTestImplementation(libs.androidx.junit)

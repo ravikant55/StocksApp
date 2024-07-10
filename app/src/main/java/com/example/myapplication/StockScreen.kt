@@ -21,7 +21,6 @@ fun StockScreen(stockViewModel: StockViewModel = viewModel(factory = StockViewMo
     val stockList by stockViewModel.stockFlow.collectAsState()
 */
 
-/*
 @Composable
 fun StockScreen() {
     val context = LocalContext.current
@@ -48,10 +47,5 @@ fun StockScreen() {
 fun PreviewStockScreen() {
     StockScreen()
 }
-*/
 
 
-@Composable
-fun stockScreen(){
-
-}
