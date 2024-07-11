@@ -4,29 +4,40 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
-import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.myapplication.StockRepository
+import com.example.myapplication.Repository
 import com.example.myapplication.StockViewModel
-import com.example.myapplication.StockViewModelFactory
+import com.example.myapplication.ViewModelFactory
 
-
-/*
 @Composable
-fun StockScreen(stockViewModel: StockViewModel = viewModel(factory = StockViewModelFactory(
-    StockRepository()
-))) {
+fun StockScreen(
+    stockViewModel: StockViewModel = viewModel(
+        factory = ViewModelFactory(
+            Repository()
+        )
+    )
+) {
     val stockList by stockViewModel.stockFlow.collectAsState()
+
+//OR
+
+    /*
+    @Composable
+    fun StockScreen(repository: StockRepository) {
+        val viewModelFactory = StockViewModelFactory(repository)
+        val stockViewModel : StockViewModel = viewModel(factory = viewModelFactory)
+    */
+
+
+    /*for JSON file*/
+    /*    @Composable
+        fun StockScreen() {
+        val context = LocalContext.current
+        val stockViewModel: StockViewModel = viewModel(factory = StockViewModelFactory(context))
+        val stockList by stockViewModel.stockFlow.collectAsState()
 */
-
-@Composable
-fun StockScreen() {
-    val context = LocalContext.current
-    val stockViewModel: StockViewModel = viewModel(factory = StockViewModelFactory(context))
-    val stockList by stockViewModel.stockFlow.collectAsState()
-
     Column(
         modifier = Modifier
             .fillMaxSize()

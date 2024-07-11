@@ -1,12 +1,6 @@
 package com.example.myapplication
 
-import android.content.Context
-import com.google.gson.Gson
-import com.google.gson.reflect.TypeToken
-import java.io.InputStreamReader
-
-/*
-class StockRepository {
+class Repository {
 
     private val stocks = listOf(
         Stock("Apple", 150.00),
@@ -18,10 +12,10 @@ class StockRepository {
         return stocks
     }
 }
-*/
 
 
-class StockRepository(private val context: Context) {
+/*
+class Repository(private val context: Context) {
 
     fun getStocks(): List<Stock> {
         // Open the JSON file from the assets folder
@@ -33,4 +27,4 @@ class StockRepository(private val context: Context) {
         // Use Gson to parse the JSON data into a list of Stock objects
         return Gson().fromJson(reader, stockListType)
     }
-}
+}*/
