@@ -22,16 +22,24 @@ class StocksViewModel(repository: StocksRepository) : ViewModel() {
                 stocks.forEachIndexed { index, stock ->
                     val newPrice = stock.price * (1 + (0.01 * Random.nextInt(-5, 6)))
                     stocks[index] = stock.copy(price = newPrice)
-
-                    /*Update one stock at a time*/
-//                    _stockFlow.value = stocks.toList() // Update the flow
-//                    delay(2500)
                 }
                 /*Update all stock at a time*/
                 _stockFlow.value = stocks.toList() // Update the flow
                 delay(2500)
             }
         }
+    }
+}
+
+/*for json*/
+@Suppress("UNCHECKED_CAST")
+class ViewModelFactory(private val context: Context) : ViewModelProvider.Factory {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        if (modelClass.isAssignableFrom(StocksViewModel::class.java)) {
+            val repository = StocksRepository(context)  //added for json
+            return StocksViewModel(repository) as T
+        }
+        throw IllegalArgumentException("Unknown ViewModel class")
     }
 }
 
@@ -47,18 +55,7 @@ class ViewModelFactory(private val repository: Repository) : ViewModelProvider.F
 }*/
 
 
-/*for json*/
 
-@Suppress("UNCHECKED_CAST")
-class ViewModelFactory(private val context: Context) : ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(StocksViewModel::class.java)) {
-            val repository = StocksRepository(context)  //added for json
-            return StocksViewModel(repository) as T
-        }
-        throw IllegalArgumentException("Unknown ViewModel class")
-    }
-}
 
 
 
