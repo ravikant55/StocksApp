@@ -8,9 +8,12 @@ import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.lifecycle.ViewModel
+import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.myapplication.StocksRepository
 import com.example.myapplication.StocksViewModel
 import com.example.myapplication.ViewModelFactory
+import com.example.myapplication.ViewModelFactory1
 
 /*
 @Composable
@@ -45,14 +48,14 @@ fun StockScreen() {
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp)
-    ) {
-        stockList.forEach { stock ->
-            Text(
-                text = "${stock.name}: $${String.format("%.2f", stock.price)}",
-                style = MaterialTheme.typography.bodyLarge,
-                modifier = Modifier.padding(vertical = 8.dp)
-            )
-        }
+        ) {
+            stockList.forEach { stock ->
+                Text(
+                    text = "${stock.name}: $${String.format("%.2f", stock.price)}",
+                    style = MaterialTheme.typography.bodyLarge,
+                    modifier = Modifier.padding(vertical = 8.dp)
+                )
+            }
     }
 }
 

@@ -43,16 +43,6 @@ class StocksRepository(private val context: Context) {
 
 
 
-class StocksRepository1(private val context: Context){
-    fun getStocksList(): List<Stock>{
-        val inputStream = context.assets.open("Stock.json")
-        val reader = InputStreamReader(inputStream)
-        val typeToken = object : TypeToken<List<Stock>>() {}.type
-        return Gson().fromJson(reader, typeToken)
-    }
-}
-
-
 
 
 
