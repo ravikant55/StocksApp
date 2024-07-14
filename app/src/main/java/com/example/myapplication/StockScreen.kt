@@ -4,22 +4,25 @@ import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.unit.dp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.compose.ui.tooling.preview.Preview
-import com.example.myapplication.Repository
-import com.example.myapplication.StockViewModel
+import com.example.myapplication.StocksRepository
+import com.example.myapplication.StocksViewModel
 import com.example.myapplication.ViewModelFactory
 
+/*
 @Composable
 fun StockScreen(
-    stockViewModel: StockViewModel = viewModel(
+    stocksViewModel: StocksViewModel = viewModel(
         factory = ViewModelFactory(
-            Repository()
+            StocksRepository()
         )
     )
 ) {
-    val stockList by stockViewModel.stockFlow.collectAsState()
+    val stockList by stocksViewModel.stockFlow.collectAsState()
+*/
 
 //OR
 
@@ -32,13 +35,13 @@ fun StockScreen(
 
 
     /*for JSON file*/
-    /*    @Composable
-        fun StockScreen() {
+@Composable
+fun StockScreen() {
         val context = LocalContext.current
-        val stockViewModel: StockViewModel = viewModel(factory = StockViewModelFactory(context))
+        val stockViewModel: StocksViewModel = viewModel(factory = ViewModelFactory(context))
         val stockList by stockViewModel.stockFlow.collectAsState()
-*/
-    Column(
+
+        Column(
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp)

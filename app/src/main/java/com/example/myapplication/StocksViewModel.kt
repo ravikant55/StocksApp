@@ -1,5 +1,6 @@
 package com.example.myapplication
 
+import android.content.Context
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.ViewModelProvider
 import androidx.lifecycle.viewModelScope
@@ -9,7 +10,7 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
 import kotlin.random.Random
 
-class StockViewModel(repository: Repository) : ViewModel() {
+class StocksViewModel(repository: StocksRepository) : ViewModel() {
 
     private val _stockFlow = MutableStateFlow(repository.getStocks())
     val stockFlow: StateFlow<List<Stock>> get() = _stockFlow
@@ -34,30 +35,30 @@ class StockViewModel(repository: Repository) : ViewModel() {
     }
 }
 
-
+/*
 @Suppress("UNCHECKED_CAST")
 class ViewModelFactory(private val repository: Repository) : ViewModelProvider.Factory {
     override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(StockViewModel::class.java)) {
-            return StockViewModel(repository) as T
-        }
-        throw IllegalArgumentException("Unknown ViewModel class")
-    }
-}
-
-
-/*for json*/
-
-/*@Suppress("UNCHECKED_CAST")
-class ViewModelFactory(private val context: Context) : ViewModelProvider.Factory {
-    override fun <T : ViewModel> create(modelClass: Class<T>): T {
-        if (modelClass.isAssignableFrom(StockViewModel::class.java)) {
-            val repository = StockRepository(context)  //added for json
-            return StockViewModel(repository) as T
+        if (modelClass.isAssignableFrom(StocksViewModel::class.java)) {
+            return StocksViewModel(repository) as T
         }
         throw IllegalArgumentException("Unknown ViewModel class")
     }
 }*/
+
+
+/*for json*/
+
+@Suppress("UNCHECKED_CAST")
+class ViewModelFactory(private val context: Context) : ViewModelProvider.Factory {
+    override fun <T : ViewModel> create(modelClass: Class<T>): T {
+        if (modelClass.isAssignableFrom(StocksViewModel::class.java)) {
+            val repository = StocksRepository(context)  //added for json
+            return StocksViewModel(repository) as T
+        }
+        throw IllegalArgumentException("Unknown ViewModel class")
+    }
+}
 
 
 
