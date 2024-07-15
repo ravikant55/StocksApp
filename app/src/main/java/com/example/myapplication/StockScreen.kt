@@ -1,4 +1,5 @@
 import androidx.compose.foundation.layout.*
+import androidx.compose.foundation.lazy.LazyColumn
 import androidx.compose.material3.*
 import androidx.compose.runtime.Composable
 import androidx.compose.runtime.collectAsState
@@ -13,7 +14,6 @@ import androidx.lifecycle.viewmodel.viewModelFactory
 import com.example.myapplication.StocksRepository
 import com.example.myapplication.StocksViewModel
 import com.example.myapplication.ViewModelFactory
-import com.example.myapplication.ViewModelFactory1
 
 /*
 @Composable
@@ -44,17 +44,19 @@ fun StockScreen() {
         val stockViewModel: StocksViewModel = viewModel(factory = ViewModelFactory(context))
         val stockList by stockViewModel.stockFlow.collectAsState()
 
-        Column(
+        LazyColumn(
         modifier = Modifier
             .fillMaxSize()
             .padding(16.dp)
         ) {
             stockList.forEach { stock ->
-                Text(
-                    text = "${stock.name}: $${String.format("%.2f", stock.price)}",
-                    style = MaterialTheme.typography.bodyLarge,
-                    modifier = Modifier.padding(vertical = 8.dp)
-                )
+                item {
+                    Text(
+                        text = "${stock.name}: $${String.format("%.2f", stock.price)}",
+                        style = MaterialTheme.typography.bodyLarge,
+                        modifier = Modifier.padding(vertical = 8.dp)
+                    )
+                }
             }
     }
 }

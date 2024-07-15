@@ -46,6 +46,7 @@ class ViewModelFactory(private val context: Context) : ViewModelProvider.Factory
     }
 }
 
+/*for list*/
 /*
 @Suppress("UNCHECKED_CAST")
 class ViewModelFactory(private val repository: Repository) : ViewModelProvider.Factory {
